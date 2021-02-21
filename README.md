@@ -28,7 +28,7 @@ add AndroidTools Dependency
 ```groovy
 dependencies {
     
-      implementation 'com.github.ShankarKakumani:AndroidTools:1.0'
+      implementation 'com.github.ShankarKakumani:AndroidTools:1.0.1'
 }
 ```
 
