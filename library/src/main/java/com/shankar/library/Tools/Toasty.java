@@ -1,6 +1,7 @@
 package com.shankar.library.Tools;
 
-import android.app.Activity;
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,97 +17,103 @@ public class Toasty {
 
     private static Toast toast;
 
-
-    public static void basicToast(Activity act, String msg)
+    public static void basicToast(Context context, String msg)
     {
         if(toast != null)
         {
             toast.cancel();
         }
-        toast = new Toast(act);
+        toast = new Toast(context);
         toast.setDuration(Toast.LENGTH_LONG);
         toast.setText(msg);
         toast.show();
     }
 
-    public static void successToast(Activity act , String msg)
+    public static void successToast(Context context , String msg)
     {
-        View custom_view = act.getLayoutInflater().inflate(R.layout.toast_layout, null);
-        ((TextView) custom_view.findViewById(R.id.message)).setText(msg);
-        ((ImageView) custom_view.findViewById(R.id.icon)).setImageResource(R.drawable.ic_success);
-        ((CardView) custom_view.findViewById(R.id.parent_view)).setCardBackgroundColor(act.getResources().getColor(R.color.successColor));
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View view = inflater.inflate(R.layout.toast_layout, null, false);
+
+        ((TextView) view.findViewById(R.id.message)).setText(msg);
+        ((ImageView) view.findViewById(R.id.icon)).setImageResource(R.drawable.ic_success);
+        ((CardView) view.findViewById(R.id.parent_view)).setCardBackgroundColor(context.getResources().getColor(R.color.successColor));
 
         if(toast != null)
         {
             toast.cancel();
         }
-        toast = new Toast(act);
+        toast = new Toast(context);
         toast.setDuration(Toast.LENGTH_LONG);
-        toast.setView(custom_view);
+        toast.setView(view);
         toast.show();
     }
 
-    public static void errorToast(Activity act , String msg)
+    public static void errorToast(Context context , String msg)
     {
-        View custom_view = act.getLayoutInflater().inflate(R.layout.toast_layout, null);
-        ((TextView) custom_view.findViewById(R.id.message)).setText(msg);
-        ((ImageView) custom_view.findViewById(R.id.icon)).setImageResource(R.drawable.ic_error);
-        ((CardView) custom_view.findViewById(R.id.parent_view)).setCardBackgroundColor(act.getResources().getColor(R.color.errorColor));
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View view = inflater.inflate(R.layout.toast_layout, null, false);
+        ((TextView) view.findViewById(R.id.message)).setText(msg);
+        ((ImageView) view.findViewById(R.id.icon)).setImageResource(R.drawable.ic_error);
+        ((CardView) view.findViewById(R.id.parent_view)).setCardBackgroundColor(context.getResources().getColor(R.color.errorColor));
         if(toast != null)
         {
             toast.cancel();
         }
-        toast = new Toast(act);
+        toast = new Toast(context);
         toast.setDuration(Toast.LENGTH_LONG);
-        toast.setView(custom_view);
+        toast.setView(view);
         toast.show();
     }
 
-    public static void failureToast(Activity act , String msg)
+    public static void failureToast(Context context , String msg)
     {
-        View custom_view = act.getLayoutInflater().inflate(R.layout.toast_layout, null);
-        ((TextView) custom_view.findViewById(R.id.message)).setText(msg);
-        ((ImageView) custom_view.findViewById(R.id.icon)).setImageResource(R.drawable.ic_success);
-        ((CardView) custom_view.findViewById(R.id.parent_view)).setCardBackgroundColor(act.getResources().getColor(R.color.errorColor));
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View view = inflater.inflate(R.layout.toast_layout, null, false);
+        ((TextView) view.findViewById(R.id.message)).setText(msg);
+        ((ImageView) view.findViewById(R.id.icon)).setImageResource(R.drawable.ic_success);
+        ((CardView) view.findViewById(R.id.parent_view)).setCardBackgroundColor(context.getResources().getColor(R.color.errorColor));
         if(toast != null)
         {
             toast.cancel();
         }
-        toast = new Toast(act);
+        toast = new Toast(context);
         toast.setDuration(Toast.LENGTH_LONG);
-        toast.setView(custom_view);
+        toast.setView(view);
         toast.show();
     }
 
-    public static void infoToast(Activity act , String msg)
+    public static void infoToast(Context context , String msg)
     {
-        View custom_view = act.getLayoutInflater().inflate(R.layout.toast_layout, null);
-        ((TextView) custom_view.findViewById(R.id.message)).setText(msg);
-        ((ImageView) custom_view.findViewById(R.id.icon)).setImageResource(R.drawable.ic_info);
-        ((CardView) custom_view.findViewById(R.id.parent_view)).setCardBackgroundColor(act.getResources().getColor(R.color.infoColor));
+
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View view = inflater.inflate(R.layout.toast_layout, null, false);
+        ((TextView) view.findViewById(R.id.message)).setText(msg);
+        ((ImageView) view.findViewById(R.id.icon)).setImageResource(R.drawable.ic_info);
+        ((CardView) view.findViewById(R.id.parent_view)).setCardBackgroundColor(context.getResources().getColor(R.color.infoColor));
         if(toast != null)
         {
             toast.cancel();
         }
-        toast = new Toast(act);
+        toast = new Toast(context);
         toast.setDuration(Toast.LENGTH_LONG);
-        toast.setView(custom_view);
+        toast.setView(view);
         toast.show();
     }
 
-    public static void customToast(Activity act , String msg , int drawable , @ColorRes int color)
+    public static void customToast(Context context , String msg , int drawable , @ColorRes int color)
     {
-        View custom_view = act.getLayoutInflater().inflate(R.layout.toast_layout, null);
-        ((TextView) custom_view.findViewById(R.id.message)).setText(msg);
-        ((ImageView) custom_view.findViewById(R.id.icon)).setImageResource(drawable);
-        ((CardView) custom_view.findViewById(R.id.parent_view)).setCardBackgroundColor(act.getResources().getColor(color));
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View view = inflater.inflate(R.layout.toast_layout, null, false);
+        ((TextView) view.findViewById(R.id.message)).setText(msg);
+        ((ImageView) view.findViewById(R.id.icon)).setImageResource(drawable);
+        ((CardView) view.findViewById(R.id.parent_view)).setCardBackgroundColor(context.getResources().getColor(color));
         if(toast != null)
         {
             toast.cancel();
         }
-        toast = new Toast(act);
+        toast = new Toast(context);
         toast.setDuration(Toast.LENGTH_LONG);
-        toast.setView(custom_view);
+        toast.setView(view);
         toast.show();
     }
 
